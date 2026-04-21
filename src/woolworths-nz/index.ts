@@ -11,6 +11,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const BASE_URL = "https://www.woolworths.co.nz";
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 const HEADLESS = process.env.WOOLWORTHS_HEADLESS !== "false";
 
 // Browser session — kept alive across tool calls
@@ -52,7 +53,7 @@ async function dismissOverlays(p: Page): Promise<void> {
       const el = await p.$(sel);
       if (el) {
         await el.click();
-        await p.waitForTimeout(400);
+        await sleep(400);
         break;
       }
     } catch {
@@ -383,7 +384,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
 
         await addBtn.el.click();
-        await p.waitForTimeout(1200);
+        await sleep(1200);
 
         // Confirm by checking cart icon count increased
         const cartCount = await p.evaluate(() => {
@@ -527,7 +528,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           ]);
           if (!btn) break;
           await btn.el.click();
-          await p.waitForTimeout(600);
+          await sleep(600);
           removedCount++;
         }
 
