@@ -1,0 +1,39 @@
+{
+  "_comment": "Add the contents of 'mcpServers' into your existing Claude Desktop config at ~/Library/Application Support/Claude/claude_desktop_config.json (macOS) or %APPDATA%\\Claude\\claude_desktop_config.json (Windows). Fill in the API keys and update the path to match where you cloned this repo.",
+
+  "mcpServers": {
+    "woolworths-nz": {
+      "_comment": "Custom Woolworths NZ server — run 'npm install && npm run build' first",
+      "command": "node",
+      "args": ["/ABSOLUTE/PATH/TO/food-shop/dist/woolworths-nz/index.js"],
+      "env": {
+        "WOOLWORTHS_EMAIL": "your@email.com",
+        "WOOLWORTHS_PASSWORD": "your_woolworths_password",
+        "WOOLWORTHS_HEADLESS": "true"
+      }
+    },
+
+    "gmail": {
+      "_comment": "Gmail via OAuth. Run 'npx @gongrzhe/server-gmail-autoauth-mcp' once in your terminal to complete the OAuth flow, then it stores tokens automatically.",
+      "command": "npx",
+      "args": ["-y", "@gongrzhe/server-gmail-autoauth-mcp"]
+    },
+
+    "todoist": {
+      "_comment": "Official Todoist MCP — get your API token at todoist.com/app/settings/integrations/developer",
+      "url": "https://ai.todoist.net/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_TODOIST_API_TOKEN"
+      }
+    },
+
+    "brave-search": {
+      "_comment": "Web research for todo tasks. Get a free API key at brave.com/search/api/",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "YOUR_BRAVE_API_KEY"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "life-admin-agent",
+  "version": "1.0.0",
+  "description": "Life admin agent — custom MCP servers for Woolworths NZ and more",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start:woolworths": "node dist/woolworths-nz/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.15.0",
+    "puppeteer": "^22.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
